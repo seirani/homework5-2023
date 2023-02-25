@@ -1,0 +1,181 @@
+/* Step 1 */
+
+/* animate the logo */
+@keyframes logo_move {
+    from {width: 25px; opacity: 0;}
+    to {width: 475px; opacity: 1;}
+}
+
+header #logo {
+    animation-name: logo_move;
+    animation-duration: 5s;
+}
+
+/* Step 2 */
+
+/* set up the font and background */
+body {
+    font-family: 'Poppins', serif;
+    background-image: url('../images/concrete_seamless.png');
+    background-color: #f1f1f1;
+}
+
+/* Step 3 */
+
+/* header tag w/ flex */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Step 4 */
+
+/* nav links w/ flex */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Step 5 */
+
+/* links should stay the same color even after visited*/
+a:visited {
+    color: blue;
+}
+
+/* Step 6 */
+
+/* make the card sections curved */
+.card {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* style the headers in the card sections */
+.card > header {
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* Step 7 */
+
+/* set the width of each card section to 450 px */
+.card {
+    flex-basis: 450px;
+}
+
+/* Step 8 */
+
+/* use flex on pricing class so cards line up in a column */
+.pricing {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Step 9 */
+
+/* image styling for gallery class */
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Step 10 */
+
+/* use flex on the image gallery */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Step 11-13 for when the screen size > 900 px */
+@media screen and (min-width: 900px){
+
+    /* Step 11 fix the header and nav links so they're spread out */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav_links {
+        flex-direction: row;
+    }
+
+    /* Step 12 fix the card class so they're centered and smaller width */
+    .pricing {
+        align-items: center;
+    }
+
+    .card {
+        flex-basis: 275px;
+    }
+
+    /* Step 13 make the header sticky */
+    body > header {
+        position: sticky;
+        width: 100%;
+        top: 0; 
+    }
+}
+
+/* Step 14 reduced motion turn off animated logo */
+@media (prefers-reduced-motion: reduce) {
+    header #logo {
+        animation: none;
+    }
+}
+
+/* Step 15-21 Print Portrait Mode */
+@media print {
+    /* remove background image and change font */
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    /* redesign the navigation links to center under the logo */
+
+    .nav_links {
+        display: inline-block;
+    }
+    .nav_links li{
+        display: inline-block;
+        padding-left: 75px;
+        padding-right: 75px;
+    }
+
+    /* make the cards align along the bottom */
+    .pricing {
+        align-items: flex-end;
+        flex-wrap: nowrap;
+    }
+
+    /* give the cards a new border */
+    .card {
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* hide the gallery content */
+    #gallery {
+        display: none;
+    }
+
+    .gallery {
+        display: none;
+    }
+
+    /* add the thumbs up emoji */
+    .card ul li:nth-child(2):after {
+        content: "\1F44D";
+    }
+}
